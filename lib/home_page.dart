@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
         _bacStatus = BACStatus.sober;
       } else if (_bac > 0.0 && _bac <= 0.05) {
         _bacStatus = BACStatus.mildImpairment;
-      } else if (_bac > 0.06 && _bac <= 0.15) {
+      } else if (_bac > 0.05 && _bac <= 0.15) {
         _bacStatus = BACStatus.increasedImpairment;
       } else if (_bac > 0.15 && _bac <= 0.3) {
         _bacStatus = BACStatus.severeImpairment;
