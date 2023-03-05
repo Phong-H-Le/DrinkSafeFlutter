@@ -15,7 +15,7 @@ class _MyAppState extends State<MyApp> {
 
   final List<Widget> _children = [
     InfoPage(),
-    HomePage(),
+    HomePage(), 
     SettingsPage(),
   ];
 
