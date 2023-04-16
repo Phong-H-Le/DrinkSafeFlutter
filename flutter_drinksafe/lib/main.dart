@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'home_page.dart';
 import 'info_page.dart';
 import 'settings_page.dart';
+import 'drinks.dart';
 
 void main() => runApp(MyApp());
 
@@ -17,6 +18,7 @@ class _MyAppState extends State<MyApp> {
     InfoPage(),
     HomePage(), 
     SettingsPage(),
+    DrinksWidget()
   ];
 
   void onTabTapped(int index) {
@@ -49,6 +51,10 @@ class _MyAppState extends State<MyApp> {
             BottomNavigationBarItem(
               icon: new Icon(Icons.settings),
               label: 'Settings',
+            ),
+            BottomNavigationBarItem(
+              icon: new Icon(Icons.ac_unit_sharp),
+              label: 'Drink',
             ),
           ],
         ),

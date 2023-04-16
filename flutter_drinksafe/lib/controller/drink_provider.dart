@@ -5,17 +5,17 @@ import 'package:http/http.dart' as http;
 
 class DrinkProvider with ChangeNotifier{
   List<DrinkEntry> _items = [];
-  final url = 'http://10.0.2.2:5000/todo';
+  final url = 'http://10.0.2.2:5000/drink';
 
   List<DrinkEntry> get items {
     return [..._items];
   }
 
-  Future<void> addDrink(String drink, double amt) async {
+  Future<void> addDrink(String drink) async {
     if(drink.isEmpty){
       return;
     }
-    Map<String, dynamic> request = {"name": drink, "amt": amt};
+    Map<String, dynamic> request = {"name": drink};
     final headers = {'Content-Type': 'application/json'};
     final response = await http.post(Uri.parse(url), headers: headers, body: json.encode(request));
     Map<String, dynamic> responsePayload = json.decode(response.body);

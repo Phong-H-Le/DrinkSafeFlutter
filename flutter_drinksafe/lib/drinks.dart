@@ -10,7 +10,7 @@ class DrinksWidget extends StatefulWidget {
 }
 
 class _DrinksWidgetState extends State<DrinksWidget> {
-  TextEditingController newTaskController = TextEditingController();
+  TextEditingController newDrinkController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class _DrinksWidgetState extends State<DrinksWidget> {
             children: [
               Expanded(
                 child: TextFormField(
-                  controller: newTaskController,
+                  controller: newDrinkController,
                   decoration: InputDecoration(
                     labelText: 'New Task',
                     border: OutlineInputBorder(),
@@ -37,8 +37,8 @@ class _DrinksWidgetState extends State<DrinksWidget> {
                   ),
                   child: Text("Add"),
                   onPressed: () {
-                    Provider.of<DrinkProvider>(context, listen: false).addDrink(newTaskController.text);
-                    newTaskController.clear();
+                    Provider.of<DrinkProvider>(context, listen: false).addDrink(newDrinkController.text);
+                    newDrinkController.clear();
                   }
               )
             ],
@@ -54,30 +54,30 @@ class _DrinksWidgetState extends State<DrinksWidget> {
                 heightFactor: MediaQuery.of(context).size.height * 0.03,
                 child: const Text('You have no tasks.', style: TextStyle(fontSize: 18),),
               ),
-              builder: (ctx, todoProvider, child) => todoProvider.items.isEmpty
+              builder: (ctx, drinkProvider, child) => drinkProvider.items.isEmpty
                   ?  child as Widget
                   : Padding(
                 padding: const EdgeInsets.only(top: 20),
                 child: Container(
                   height: MediaQuery.of(context).size.height * 0.6,
                   child: ListView.builder(
-                      itemCount: todoProvider.items.length,
+                      itemCount: drinkProvider.items.length,
                       itemBuilder: (ctx, i) => Padding(
                         padding: const EdgeInsets.only(bottom: 10.0),
                         child: ListTile(
                           tileColor: Colors.black12,
                           leading: Checkbox(
-                              value: todoProvider.items[i].drinkAmount,
+                              value: drinkProvider.items[i].drinkAmount > 1,
                               activeColor: Colors.purple,
                               onChanged:(newValue) {
-                                Provider.of<DrinkProvider>(context, listen: false).incrementDrink(todoProvider.items[i].id);
+                                Provider.of<DrinkProvider>(context, listen: false).incrementDrink(drinkProvider.items[i].id);
                               }
                           ),
-                          title: Text(todoProvider.items[i].drinkName),
+                          title: Text(drinkProvider.items[i].drinkName),
                           trailing: IconButton(
                               icon: Icon(Icons.delete, color: Colors.red),
                               onPressed: ()  {
-                                Provider.of<DrinkProvider>(context, listen: false).deleteDrink(todoProvider.items[i].id);
+                                Provider.of<DrinkProvider>(context, listen: false).deleteDrink(drinkProvider.items[i].id);
                               }
                           ) ,
                           onTap: () {},
